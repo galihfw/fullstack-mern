@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Fragment} from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProductList from "./components/ProductList";
+import AddProduct from "./components/AddProduct";
+import EditProduct from "./components/EditProduct";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Fragment>
+      <div className="container">
+        <div className="columns">
+          <div className="column is-half is-offset-one-querter">
+            <Routes>
+              <Route exact path="/" element={<ProductList/>}>
+                {/* <ProductList /> */}
+              </Route>
+              <Route path="/add" element={<AddProduct/>}>
+                {/* <AddProduct /> */}
+              </Route>
+              <Route path="/edit/:id" element={<EditProduct/>}>
+                {/* <EditProduct /> */}
+              </Route>
+            </Routes>
+          </div>
+        </div>
+      </div>
+      </Fragment>
+    </Router>
+    
   );
 }
 
